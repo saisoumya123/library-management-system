@@ -1,6 +1,5 @@
 package com.capgemini.librarymanagementsystem.dao;
 
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,13 +9,14 @@ import com.capgemini.librarymanagementsystem.dto.BookBean;
 import com.capgemini.librarymanagementsystem.dto.RequestBean;
 import com.capgemini.librarymanagementsystem.dto.StudentBean;
 import com.capgemini.librarymanagementsystem.exception.AdminException;
+import com.capgemini.librarymanagementsystem.exception.BookException;
 import com.capgemini.librarymanagementsystem.exception.StudentException;
 
 public class AdminDAOImp implements AdminDAO {
 
 	public boolean register(AdminBean info) {
-		for(AdminBean adminBean : DataBase.admin) {
-			if(adminBean.getEmail().equals(info.getEmail())) {
+		for (AdminBean adminBean : DataBase.admin) {
+			if (adminBean.getEmail().equals(info.getEmail())) {
 				return false;
 			}
 		}
@@ -26,35 +26,29 @@ public class AdminDAOImp implements AdminDAO {
 	}
 
 	public AdminBean auth(String email, String password) {
-		for(AdminBean bean : DataBase.admin) {
-			if(bean.getEmail().equals(email) && bean.getPassword().equals(password)) {
+		for (AdminBean bean : DataBase.admin) {
+			if (bean.getEmail().equals(email) && bean.getPassword().equals(password)) {
 				System.out.println("Login Successful");
 				return bean;
-			} 
+			}
 		}
 		throw new AdminException("Invalid email and password");
 
 	}
 
-	
 	public LinkedList<BookBean> searchBookTitle(String bname) {
-		LinkedList<BookBean> searchList=new LinkedList<BookBean>();
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-		{
-			BookBean retrievedBook=DataBase.book.get(i);
-			String retrievedBname=retrievedBook.getName();
-			if(bname.equals(retrievedBname))
-			{
-				searchList.add(retrievedBook);	
+		LinkedList<BookBean> searchList = new LinkedList<BookBean>();
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			String retrievedBname = retrievedBook.getName();
+			if (bname.equals(retrievedBname)) {
+				searchList.add(retrievedBook);
 				return searchList;
 			}
 		}
-		if(searchList.size()==0)
-		{
+		if (searchList.size() == 0) {
 			throw new AdminException("Book not found");
-		}
-		else
-		{
+		} else {
 			return searchList;
 		}
 
@@ -62,76 +56,45 @@ public class AdminDAOImp implements AdminDAO {
 
 	public LinkedList<BookBean> searchBookAuthor(String bAuthor) {
 
-		LinkedList<BookBean> searchList=new LinkedList<BookBean>();
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-		{
-			BookBean retrievedBook=DataBase.book.get(i);
-			String retrievedBAuthor=retrievedBook.getAuthor();
-			if(bAuthor.equals(retrievedBAuthor))
-			{
-				searchList.add(retrievedBook);	
+		LinkedList<BookBean> searchList = new LinkedList<BookBean>();
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			String retrievedBAuthor = retrievedBook.getAuthor();
+			if (bAuthor.equals(retrievedBAuthor)) {
+				searchList.add(retrievedBook);
 			}
 		}
-		if(searchList.size()==0)
-		{
+		if (searchList.size() == 0) {
 			throw new AdminException("Book not found");
-		}
-		else
-		{
+		} else {
 			return searchList;
-		}		
+		}
 
 	}
 
 	public LinkedList<BookBean> searchBookType(int bookType) {
-		LinkedList<BookBean> searchList=new LinkedList<BookBean>();
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-		{
-			BookBean retrievedBook=DataBase.book.get(i);
-			int retrievedBookType=retrievedBook.getId();
-			if(bookType==retrievedBookType)
-			{
-				searchList.add(retrievedBook);	
+		LinkedList<BookBean> searchList = new LinkedList<BookBean>();
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			int retrievedBookType = retrievedBook.getId();
+			if (bookType == retrievedBookType) {
+				searchList.add(retrievedBook);
 			}
 		}
-		if(searchList.size()==0)
-		{
+		if (searchList.size() == 0) {
 			throw new AdminException("Book not found");
-		}
-		else
-		{
+		} else {
 			return searchList;
-		}		
+		}
 	}
 
-
-	public int update(int bId) {
-		int status=0;
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-			
-			{
-				BookBean retrievedBook=DataBase.book.get(i);
-				int retrievedId=retrievedBook.getId();
-				if(bId==retrievedId)
-				{
-					status++;
-					break;
-				}
-			}
-			throw new AdminException("Book not updated");
-
-
-		}
-
 	public boolean delete(int bId) {
-		boolean status=false;
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-		{
-			BookBean retrievedBook=DataBase.book.get(i);
-			int retrievedId=retrievedBook.getId();
-			if(bId==retrievedId)
-			{
-				status=true;
+		boolean status = false;
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			int retrievedId = retrievedBook.getId();
+			if (bId == retrievedId) {
+				status = true;
 				DataBase.book.remove(i);
 				break;
 			}
@@ -140,42 +103,30 @@ public class AdminDAOImp implements AdminDAO {
 	}
 
 	public boolean addBook(BookBean book) {
-		for(BookBean bean : DataBase.book) {
-			if(bean.getId()==book.getId()) {
+		for (BookBean bean : DataBase.book) {
+			if (bean.getId() == book.getId()) {
 				return false;
-			}	
+			}
 		}
 		DataBase.book.add(book);
 		return true;
 	}
 
 	public LinkedList<Integer> getBookIds() {
-		LinkedList<Integer> idList=new LinkedList<Integer>();
-		for(int i=0;i<=DataBase.book.size()-1;i++)
-		{
-			BookBean retrievedBook=DataBase.book.get(i);
-			int retrievedBookId=retrievedBook.getId();
+		LinkedList<Integer> idList = new LinkedList<Integer>();
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			int retrievedBookId = retrievedBook.getId();
 			idList.add(retrievedBookId);
 		}
 		return idList;
 	}
 
 	public LinkedList<BookBean> getBooksInfo() {
-		
+
 		return DataBase.book;
 	}
 
-	public boolean issueBook(int bId) {
-		for(BookBean bean : DataBase.book) {
-			if(bean.getId()==bId) {
-				DataBase.book.remove(bId);
-				return true;
-			} else {
-				return false;
-			}
-		}
-		return false;
-	}
 	public List<StudentBean> showUsers() {
 		List<StudentBean> usersList = new LinkedList<StudentBean>();
 		for (StudentBean studentBean : DataBase.student) {
@@ -223,7 +174,6 @@ public class AdminDAOImp implements AdminDAO {
 
 		{
 
-
 			for (BookBean info2 : DataBase.book) {
 				if (info2.getId() == book.getId()) {
 					book = info2;
@@ -242,9 +192,11 @@ public class AdminDAOImp implements AdminDAO {
 
 			if (noOfBooksBorrowed < 3) {
 
-				boolean isRemoved = DataBase.book.remove(book);
-				if (isRemoved) {
-
+				// boolean isRemoved = DataBase.book.remove(book);
+				int booksAvailable = book.getCopies();
+				if (booksAvailable > 0) {
+					booksAvailable--;
+					book.setCopies(booksAvailable);
 					noOfBooksBorrowed++;
 					System.out.println(noOfBooksBorrowed);
 					student.setBooksBorrowed(noOfBooksBorrowed);
@@ -271,8 +223,7 @@ public class AdminDAOImp implements AdminDAO {
 		for (RequestBean requestInfo : DataBase.request) {
 
 			if (requestInfo.getBookInfo().getId() == book.getId()
-					&& requestInfo.getStudentInfo().getId() == student.getId() 
-					&& requestInfo.isReturned() == true) {
+					&& requestInfo.getStudentInfo().getId() == student.getId() && requestInfo.isReturned() == true) {
 				isValid = true;
 				requestInfo1 = requestInfo;
 			}
@@ -281,9 +232,11 @@ public class AdminDAOImp implements AdminDAO {
 
 			book.setAuthor(requestInfo1.getBookInfo().getAuthor());
 			book.setName(requestInfo1.getBookInfo().getName());
-			DataBase.book.add(book);
+			// DataBase.book.add(book);
+			int noOfBooksAvailble = book.getCopies();
+			noOfBooksAvailble++;
+			book.setCopies(noOfBooksAvailble);
 			DataBase.request.remove(requestInfo1);
-
 
 			for (StudentBean userInfo2 : DataBase.student) {
 				if (userInfo2.getId() == student.getId()) {
@@ -300,8 +253,23 @@ public class AdminDAOImp implements AdminDAO {
 
 		return false;
 	}
+
+	@Override
+	public boolean update(BookBean bean) {
+
+		for (int i = 0; i <= DataBase.book.size() - 1; i++) {
+			BookBean retrievedBook = DataBase.book.get(i);
+			if (retrievedBook.getId() == bean.getId()) {
+				retrievedBook.setName(bean.getName());
+				return true;
+
+			}
+
+			else {
+				throw new BookException("Invalid Book");
+			}
+		}
+		throw new AdminException("Book not updated");
+	}
+
 }
-	
-
-	
-

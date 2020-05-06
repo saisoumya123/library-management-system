@@ -35,8 +35,8 @@ import com.capgemini.librarymanagementsystem.factory.AdminFactory;
 			return dao.searchBookType(bookType);
 		}
 
-		public int update(int bId) {
-			return dao.update(bId);
+		public boolean update(BookBean bean) {
+			return dao.update(bean);
 		}
 
 		public boolean delete(int bId) {
@@ -55,10 +55,7 @@ import com.capgemini.librarymanagementsystem.factory.AdminFactory;
 			return dao.getBooksInfo();
 		}
 
-		public boolean issueBook(int bId) {
-			
-			return dao.issueBook(bId);
-		}
+		
 
 		@Override
 		public List<StudentBean> showUsers() {
