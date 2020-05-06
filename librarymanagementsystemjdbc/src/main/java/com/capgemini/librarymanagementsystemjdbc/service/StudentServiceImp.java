@@ -6,14 +6,16 @@ import java.util.List;
 import com.capgemini.librarymanagementsystemjdbc.dao.AdminDAO;
 import com.capgemini.librarymanagementsystemjdbc.dao.StudentDAO;
 import com.capgemini.librarymanagementsystemjdbc.dto.BookBean;
+import com.capgemini.librarymanagementsystemjdbc.dto.BorrowedBookBean;
+import com.capgemini.librarymanagementsystemjdbc.dto.RequestBook;
 import com.capgemini.librarymanagementsystemjdbc.factory.AdminFactory;
 import com.capgemini.librarymanagementsystemjdbc.factory.StudentFactory;
 
 public class StudentServiceImp implements StudentService{
 	private StudentDAO dao = StudentFactory.getStudentDAO();
 	@Override
-	public BookBean searchBookTitle(String name) {
-		return dao.searchBookTitle(name);
+	public BookBean searchBookTitle(String bookTitle) {
+		return dao.searchBookTitle(bookTitle);
 	}
 
 	@Override
@@ -22,7 +24,7 @@ public class StudentServiceImp implements StudentService{
 	}
 
 	@Override
-	public LinkedList<Integer> getBookIds() {
+	public List<BookBean> getBookIds() {
 		return dao.getBookIds();
 	}
 
@@ -32,18 +34,18 @@ public class StudentServiceImp implements StudentService{
 	}
 
 	@Override
-	public boolean req(int id,String email ) {
-		return dao.req(id,email);
+	public boolean req(int id,int book_id ) {
+		return dao.req(id, book_id);
 	}
 
 	@Override
-	public boolean returnBook(int id) {
-		return dao.returnBook(id);
+	public BookBean searchBookType(int bookId) {
+		return dao.searchBookType(bookId);
 	}
 
 	@Override
-	public BookBean searchBookType(int bookType) {
-		return dao.searchBookType(bookType);
+	public boolean reqReturnBook(int book_Id, int id) {
+		return dao.reqReturnBook(book_Id, id);
 	}
 
 }

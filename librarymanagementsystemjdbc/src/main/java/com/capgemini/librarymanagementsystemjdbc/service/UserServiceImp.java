@@ -8,12 +8,12 @@ public class UserServiceImp implements UserService{
 	private UserDAO dao = UserFactory.getUser();
 
 	@Override
-	public int register(UserBean bean) {
+	public boolean register(UserBean bean) {
 		return dao.register(bean);
 	}
 
 	@Override
-	public String auth(String email, String password) {
+	public UserBean auth(String email, String password) {
 		return dao.auth(email, password);
 	}
 	

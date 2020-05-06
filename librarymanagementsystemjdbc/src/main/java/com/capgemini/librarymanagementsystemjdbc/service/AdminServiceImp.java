@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.capgemini.librarymanagementsystemjdbc.dao.AdminDAO;
 import com.capgemini.librarymanagementsystemjdbc.factory.AdminFactory;
-import com.capgemini.librarymanagementsystemjdbc.dto.AdminBean;
 import com.capgemini.librarymanagementsystemjdbc.dto.BookBean;
 
 public class AdminServiceImp implements AdminService{
@@ -14,17 +13,17 @@ public class AdminServiceImp implements AdminService{
 
 	
 	@Override
-	public int delete(int bId) {
+	public boolean delete(int bId) {
 		return dao.delete(bId);
 	}
 
 	@Override
-	public int addBook(BookBean info) {
+	public boolean addBook(BookBean info) {
 		return dao.addBook(info);
 	}
 
 	@Override
-	public LinkedList<Integer> getBookIds() {
+	public LinkedList<BookBean> getBookIds() {
 		return dao.getBookIds();
 	}
 
@@ -33,29 +32,35 @@ public class AdminServiceImp implements AdminService{
 		return dao.getBooksInfo();
 	}
 
+	
 	@Override
-	public boolean issueBook(int bId,String email) {
-		return dao.issueBook(bId, email);
+	public BookBean searchBookTitle(String booktitle) {
+		return dao.searchBookTitle(booktitle);
 	}
 
 	@Override
-	public BookBean searchBookTitle(String bname) {
-		return dao.searchBookTitle(bname);
+	public BookBean searchBookAuthor(String author) {
+		return dao.searchBookAuthor(author);
 	}
 
 	@Override
-	public BookBean searchBookAuthor(String bAuthor) {
-		return dao.searchBookAuthor(bAuthor);
+	public BookBean searchBookType(int bookid) {
+		return dao.searchBookType(bookid);
 	}
 
 	@Override
-	public BookBean searchBookType(int bookType) {
-		return dao.searchBookType(bookType);
-	}
-
-	@Override
-	public int update(BookBean book) {
+	public boolean update(BookBean book) {
 		return dao.update(book);
+	}
+
+	@Override
+	public boolean issueBook(int book_Id, int id) {
+		return dao.issueBook(book_Id, id);
+	}
+
+	@Override
+	public boolean returnBook(int book_Id, int id) {
+		return dao.returnBook(book_Id, id);
 	}
 
 }

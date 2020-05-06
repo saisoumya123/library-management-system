@@ -3,7 +3,7 @@ package com.capgemini.librarymanagementsystemjdbc.dto;
 public class UserBean {
 	private String name;
 	private int id;
-	private long mobile;
+	private String mobile;
 	private String email;
 	private String password;
 	private String role;
@@ -19,11 +19,11 @@ public class UserBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public long getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setMobile(String regMobile) {
+		this.mobile = regMobile;
 	}
 	public String getEmail() {
 		return email;
