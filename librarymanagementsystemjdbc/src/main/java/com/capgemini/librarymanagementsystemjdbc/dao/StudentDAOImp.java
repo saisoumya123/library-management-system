@@ -15,7 +15,7 @@ import java.util.Scanner;
 //import com.capgemini.librarymanagementsystemjdbc.controller.Admin;
 import com.capgemini.librarymanagementsystemjdbc.dto.BookBean;
 import com.capgemini.librarymanagementsystemjdbc.dto.BorrowedBookBean;
-import com.capgemini.librarymanagementsystemjdbc.dto.RequestBook;
+import com.capgemini.librarymanagementsystemjdbc.dto.RequestBookBean;
 import com.capgemini.librarymanagementsystemjdbc.dto.UserBean;
 import com.capgemini.librarymanagementsystemjdbc.exception.LMSException;
 import com.capgemini.librarymanagementsystemjdbc.utility.JdbcUtility;

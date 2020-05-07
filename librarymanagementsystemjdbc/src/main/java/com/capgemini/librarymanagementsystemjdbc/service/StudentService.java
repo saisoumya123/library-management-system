@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.capgemini.librarymanagementsystemjdbc.dto.BookBean;
 import com.capgemini.librarymanagementsystemjdbc.dto.BorrowedBookBean;
-import com.capgemini.librarymanagementsystemjdbc.dto.RequestBook;
+import com.capgemini.librarymanagementsystemjdbc.dto.RequestBookBean;
 
 public interface StudentService {
 	public BookBean searchBookTitle(String bookTitle); 

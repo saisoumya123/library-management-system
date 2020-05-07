@@ -7,7 +7,7 @@ import com.capgemini.librarymanagementsystemjdbc.dao.AdminDAO;
 import com.capgemini.librarymanagementsystemjdbc.dao.StudentDAO;
 import com.capgemini.librarymanagementsystemjdbc.dto.BookBean;
 import com.capgemini.librarymanagementsystemjdbc.dto.BorrowedBookBean;
-import com.capgemini.librarymanagementsystemjdbc.dto.RequestBook;
+import com.capgemini.librarymanagementsystemjdbc.dto.RequestBookBean;
 import com.capgemini.librarymanagementsystemjdbc.factory.AdminFactory;
 import com.capgemini.librarymanagementsystemjdbc.factory.StudentFactory;
 
