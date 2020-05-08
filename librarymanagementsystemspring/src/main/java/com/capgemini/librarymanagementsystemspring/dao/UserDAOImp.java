@@ -21,7 +21,6 @@ public class UserDAOImp implements UserDAO{
 EntityManagerFactory factory;
 	@Override
 	public boolean register(UserBean bean) {
-		EntityManagerFactory factory=null;
 		EntityManager manager=null;
 		EntityTransaction transaction=null;
 		boolean isRegistered = false;
@@ -44,7 +43,6 @@ EntityManagerFactory factory;
 
 	@Override
 	public UserBean auth(String email, String password) {
-		EntityManagerFactory factory = null;
 		EntityManager manager = null;
 		EntityTransaction transaction = null;
 		//String res = null;

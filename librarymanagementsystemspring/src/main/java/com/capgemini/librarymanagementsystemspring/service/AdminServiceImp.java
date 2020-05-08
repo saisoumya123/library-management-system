@@ -8,11 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.librarymanagementsystemspring.dao.AdminDAO;
+import com.capgemini.librarymanagementsystemspring.dao.AdminDAOImp;
 import com.capgemini.librarymanagementsystemspring.dto.BookBean;
 @Service
 public class AdminServiceImp implements AdminService{
 	@Autowired
-	private AdminDAO dao;
+	 AdminDAO dao;// = new AdminDAOImp();
 	@Override
 	public boolean update(BookBean book) {
 		return dao.update(book);

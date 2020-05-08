@@ -16,12 +16,15 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode.Exclude;
 
 @Data
 @Entity
 @Table(name="requestbookspring")
+@JsonDeserialize
 //@IdClass(RequestBookPK.class)
 public class RequestBookBean {
 	@EmbeddedId

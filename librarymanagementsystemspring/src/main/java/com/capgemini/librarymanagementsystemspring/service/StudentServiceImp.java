@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.librarymanagementsystemspring.dao.StudentDAO;
+import com.capgemini.librarymanagementsystemspring.dao.StudentDAOImp;
 import com.capgemini.librarymanagementsystemspring.dto.BookBean;
 //import com.capgemini.librarymanagementsystemspring.factory.StudentFactory;
 @Service
 public class StudentServiceImp implements StudentService{
 	@Autowired
-	private StudentDAO dao;
+	 StudentDAO dao;// = new StudentDAOImp();
 	@Override
 	public BookBean searchBookTitle(String name) {
 		return dao.searchBookTitle(name);

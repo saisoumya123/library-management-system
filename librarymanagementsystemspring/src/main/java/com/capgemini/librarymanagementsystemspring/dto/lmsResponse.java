@@ -17,5 +17,7 @@ public class lmsResponse {
 	private List<Integer> bookBeanId;
 	private List<BookBean> bookBeanList;
 	private BookIssueDetailsBean bookIssue;
+	private RequestBookBean requestBook;
+	private BorrowedBookBean borrowBook;
 	
 }
