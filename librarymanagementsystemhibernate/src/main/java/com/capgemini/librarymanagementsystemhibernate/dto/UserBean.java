@@ -31,10 +31,10 @@ public class UserBean {
 	
 	
 	  @OneToMany(cascade=CascadeType.ALL,mappedBy="primary",fetch = FetchType.EAGER) 
-	  private List<RequestBook> reqBook;
+	  private List<RequestBookBean> reqBook;
 	  
 	  @OneToMany(cascade=CascadeType.ALL,mappedBy="primary") private
-	  List<BookIssueDetails> bookIssue;
+	  List<BookIssueDetailsBean> bookIssue;
 	 
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="primary")
 	private List<BorrowedBookBean> borrowBook;

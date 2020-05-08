@@ -7,7 +7,7 @@ import javax.xml.bind.ValidationException;
 
 public class ValidationAdminStudent {
 	public boolean validatedName(String name) throws ValidationException {
-		String nameRegEx = "^(?=.{3,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9._-]+(?<![_.-])";
+		String nameRegEx = "^(?=.{3,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z._-]+(?<![_.-])";
 		boolean result = false;
 		Pattern pattern = Pattern.compile(nameRegEx);
 		Matcher matcher = pattern.matcher(name);
